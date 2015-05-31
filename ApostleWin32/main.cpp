@@ -16,8 +16,8 @@ HINSTANCE hInst;
 // Forward declarations of functions included in this code module:
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-int WINAPI WinMain(HINSTANCE hInstance,
-	HINSTANCE hPrevInstance,
+int WINAPI WinMain(
+	HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine,
 	int nCmdShow)
 {
@@ -36,11 +36,9 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	wcex.lpszClassName = szWindowClass;
 	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
 
-	if (!RegisterClassEx(&wcex))
-	{
+	if (!RegisterClassEx(&wcex)) {
 		MessageBox(NULL,
-			_T("Call to RegisterClassEx failed!"),
-			_T("Win32 Guided Tour"),
+			_T("Call to RegisterClassEx failed!"), _T("Win32 Guided Tour"),
 			NULL);
 
 		return 1;
@@ -64,17 +62,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		500, 100,
-		NULL,
-		NULL,
+		NULL, NULL,
 		hInstance,
-		NULL
-		);
+		NULL);
 
-	if (!hWnd)
-	{
+	if (!hWnd) {
 		MessageBox(NULL,
-			_T("Call to CreateWindow failed!"),
-			_T("Win32 Guided Tour"),
+			_T("Call to CreateWindow failed!"), _T("Win32 Guided Tour"),
 			NULL);
 
 		return 1;
@@ -89,8 +83,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	// Main message loop:
 	MSG msg;
-	while (GetMessage(&msg, NULL, 0, 0))
-	{
+	while (GetMessage(&msg, NULL, 0, 0)) {
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
@@ -113,8 +106,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	HDC hdc;
 	TCHAR greeting[] = _T("Hello, World!");
 
-	switch (message)
-	{
+	switch (message) {
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 
